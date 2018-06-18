@@ -1,6 +1,5 @@
 echo "# testfolder" >> README.md
 git init
-git add README.md
 git commit -m "first commit"
 git remote add origin https://github.com/Rgerritzen01/testfolder.git
 git push -u origin master
