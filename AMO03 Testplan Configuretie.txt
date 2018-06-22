@@ -1,0 +1,19 @@
+index
+	als je bij het index komt moet je eerst ingloggen (daar ben ik niet verantwoordelijk voor)
+	daarna start er een functie
+	die kijkt of de status van een probleem is veranderd sinds je voor het laatst hebt ingelogd
+	als dat zo is, dan krijgt het "bekijk incidenten" tabblad een andere kleur en knippert het
+
+incident melden
+	als je op submit klikt dan start je een functie
+	die kijkt eerst haalt hij alle variabelen op en zet ze in een array
+	dan kijkt hij met een if-statement in een loop of alles in de array is ingevuld, als dat niet zo is krijg je een melding en stopt de functie
+	dan kijkt hij met if-statements of alles wat je hebt ingevuld correct kan zijn (een postcode kan bijvoorbeeld niet 8 tekens lang zijn), als dat niet zo is krijg je een melding en stopt de functie
+	als alles op dat moment goed is gegaan dan wordt met een loop alles in de array geupload naar de databse en krijgt de gebruiker een alertbox dat het verzoek is ingedient
+
+incidenten bekijken
+	als je de pagina laad start een functie
+	die haalt alle informatie van de databse die met het gebruikersnummer is gelinkt aan de ingelogde gebruiker
+	dan schrijft hij met een loop voor alle incidenten een aparte div met als tekst alleen de titel met kleine letters de status er bij
+	(de incidenten zijn oplopend gesorteerd op datum)
+	als je klikt op de titel krijg je alle informatie die je als gebruiker mag zien in een klein vakje onderin je scherm
