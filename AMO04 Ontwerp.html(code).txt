@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Rhein</title>
+		<style>
+			body {
+				width: 100vw;
+				height: 100vh;
+				overflow: hidden;
+			}
+			#inhoud {
+				position: absolute;
+				top: 30vh;
+				left: 10vw;
+				width: 80vw;
+				height: 60vh;
+				border: solid black 0.2vmin;
+			}
+			.logo {
+				height: 15vh;
+			}
+			.bestandbutton {
+				position: absolute;
+				top: 15vh;
+				left: 0;
+				width: 8vw;
+				height: 3vh;
+			}
+			.infobutton {
+				position: absolute;
+				top: 15vh;
+				left: 8vw;
+				width: 8vw;
+				height: 3vh;
+			}
+			.schermnaam {
+				position: absolute;
+				right: 0;
+				top: 0;
+				font-size: 10vmin;
+			}
+			.exit {
+				position: absolute;
+				bottom: 2vh;
+				right: 2vw;
+				width: 6vw;
+				height: 3vh;
+			}
+		</style>
+	</head>
+	<body>
+		<img class="logo" src="AMO04 Rhein logo.png">
+		<button class="bestandbutton">bestand</button>
+		<button class="infobutton">info</button>
+		<div class="schermnaam">Hijstabel</div>
+		<iframe id="inhoud" src="AMO04 Formulier.html"></iframe>
+		<button class="exit">exit</button>
+	</body>
+</html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Rhein</title>
+		<style>
+			p {
+				width: 60%;
+			}
+			.td1 {
+				padding-left: 2vw;
+				padding-right: 2vw;
+			}
+			table {
+				border-collapse: collapse;
+			}
+			table, th, td {
+				border: 1px solid black;
+			}
+			td > input {
+				width: 95%;
+			}
+			.row1{border-bottom: solid 0px transparent;}
+			.row2{border-top: solid 0px transparent;}
+			.exc1{border-bottom: 1px solid black}
+		</style>
+	</head>
+	<body>
+		<h3>Tabel Hijskraangegevens (2100)</h3>
+		<h4>opdrachtnummer: <input type="text" name="opdrachtnummer"></h4>
+		<h4>Werkinstructie</h4>
+		<p>Bepaal (bereken of lees af uit de tabel) de toelaatbare hijslast, behorende de gemeten vlucht.<br>
+		bereken vervolgens de afwijking met de volgende formule:<br>
+		afwijking = (proeflast-toelaatbare hijslast)/toelaatbare hijslast *100%</p>
+		<table border="1">
+			<thead>
+				<tr class="row1">
+					<td class="exc1" rowspan="2">volgnummer beproeving</td>
+					<td colspan="3">opgesteld op</td>
+					<td colspan="4">Gieklengte</td>
+					<td colspan="3">Giekhoek</td>
+					<td colspan="4">Zwenkhoek</td>
+					<td colspan="2">Beproeving</td>
+					<td colspan="2">Akkoord</td>
+				</tr>
+				<tr class="row2">
+					<td>Banden</td>
+					<td>Stempels</td>
+					<td>Rupsen</td>
+					<td>Hoofdgiek</td>
+					<td>Mechanische selectie</td>
+					<td>Hulpgiek</td>
+					<td>Totale gieklengte</td>
+					<td>Hoofdgiek</td>
+					<td>Hulpgiek</td>
+					<td>Aantal parten Hijskabel</td>
+					<td>R=360 A=achter-, Z=zij-, V=voorscector</td>
+					<td>Eigen Massa Ballast LBM code</td>
+					<td>Toelaatbare Bedrijfslast bij inwerking</td>
+					<td>LBM treedt in werking bij</td>
+					<td>proeflast</td>
+					<td>afwijking in %</td>
+					<td>Ja</td>
+					<td>Nee</td>
+				</tr>
+			</thead>
+			<tbody onchange="recalculate()">
+			</tbody>
+		</table><br>
+		<button onclick="verstuur()">verstuur</button>
+	</body>
+</html>
+
+<script>
+//make Tbody
+names = ['banden', 'stempels', 'rupsen', 'gieklengtehoofdgiek', 'gieklengtemechanischeselectie', 'gieklengtehulpgiek', 'gieklengtetotalegiek', 'giekhoekhoofdgiek', 'giekhoekhulpgiek', 'aantalpartenhijskabel' , 'zwenkhoek', 'eigenmassabelastbmcode', 'toelaatbarebedrijfslastlmb', 'lmbtreedtinwerkingbij', 'proeflast', 'afwijking', 'akkoordja', 'akkoordnee'];
+for (index = 1; index < 5; index += 1)
+	{
+	table = '<tr><td class="td1">' + index + '</td>';
+	for (i = 0; i < 18; i += 1)
+		{
+		if (names[i].includes("akkoordja"))
+			{table = table + '<td><input type="radio" id="akkoordja' + index + '" name="akkoord' + index + '" value="1" /></td>';}
+		else if (names[i].includes("akkoordnee"))
+			{table = table + '<td><input type="radio" id="akkoordnee' + index + '" name="akkoord' + index + '" value="0" checked/></td>';}
+		else
+			{table = table + '<td><input type="text" id="' + names[i] + index + '" name="' + names[i] + index + '" /></td>';}
+		}
+	table = table + '</tr>';
+	document.getElementsByTagName("tbody")[0].innerHTML = document.getElementsByTagName("tbody")[0].innerHTML + table;
+	}
+function verstuur(){
+	empety = 0;
+	nonums = 0;
+	for (index = 1; index < 5; index += 1)
+		{
+		for (i = 0; i < 18; i += 1)
+			{
+			value = document.getElementById(names[i] + index).value;
+			if (value === "")
+				{empety += 1};
+			if (!isanum(value))
+				{nonums += 1}
+			}
+		}
+	
+	if (empety > 0)
+		{
+		alert(empety + " fields have been left empety");
+		return
+		}
+	if (nonums > 0)
+		{
+		alert(nonums + " fields a non-numeric value");
+		return
+		}
+alert("continue");
+}
+
+function recalculate(){
+	for (index = 1; index < 5; index += 1)
+		{
+		len = parseInt(document.getElementById("gieklengtehoofdgiek" + index).value);
+		len += parseInt(document.getElementById("gieklengtemechanischeselectie" + index).value);
+		len += parseInt(document.getElementById("gieklengtehulpgiek" + index).value);
+		document.getElementById("gieklengtetotalegiek" + index).value = len;
+
+		
+		}
+	
+}
+
+function isanum(value){
+	return !isNaN(parseFloat(value)) && isFinite(value);
+}
+</script>
