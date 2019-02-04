@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>flits</title>
+		<meta charset="utf-8">
+		<style>
+			* {
+				text-align: center;
+			}
+			p {
+				position: absolute;
+				width: 60%;
+				left: 20%;
+			}
+			#screenshots {
+				margin-top: 40%;
+				float: bottom;
+				}
+		</style>
+	</head>
+	<body>
+		<h1>schrikkeljaar?</h1>
+		<p>
+		<button onClick="schrikkeljaar()">geef jaar</button><br>
+		</p>
+		<button id="screenshots" onClick="screenshots()">screenshots</button><br>
+	</body>
+</html>
+
+<script>
+function schrikkeljaar(){
+	if (prompt('geef het jaar') % 4 == 0)
+		{alert('dit is een schrikkeljaar');
+	}else{
+		alert('dit is geen schrikkeljaar');}
+	}
+
+function screenshots(){
+	document.write('<h1>algoritme</h1><br><img src="fiche6 algoritme.PNG"><h1><br><br>code</h1><br><img src="fiche6 code.PNG"><h1><br><br>probleemanalyse</h1><br><img src="fiche6 probleemanalyse.PNG"><h1><br><br>testtabel</h1><br><img src="fiche6 testtabel.PNG">');
+	}
+</script>

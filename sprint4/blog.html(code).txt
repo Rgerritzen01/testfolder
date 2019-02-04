@@ -1,0 +1,3 @@
+<script>
+window.location.href="http://groep6scrumrenzo.000webhostapp.com/sprint 4/blog/inloggen.html";
+</script>
